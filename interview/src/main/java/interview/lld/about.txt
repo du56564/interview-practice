@@ -1,0 +1,22 @@
+Pattern-FAANG uses it
+Singleton   Logging, Config, Caches
+Factory     Object creation at scale
+Builder     Complex request objects
+Strategy    Parking, Pricing, Matching
+State       Vending Machine, Payments
+Observer    Pub-Sub, Notifications
+Chain of Responsibility Logging
+Composite   File System
+Command     Transactions, Rollbacks
+
+
+
+
+
+Day 1,Core + Cache + Real System,"LLD fundamentals + Design Patterns; LRU Cache; Parking Lot"
+Day 2,State + Real-World Machines,"Vending Machine; ATM; Logging Framework"
+Day 3,Messaging Systems,"Notification System; Pub-Sub System; Chat Application"
+Day 4,Coordination + Control,"Elevator System; Rate Limiter; Task Scheduler"
+Day 5,Web + Payments,"URL Shortener; Payment Gateway; Inventory Management System"
+Day 6,Hard FAANG-style,"Movie Booking System; In-Memory File System; Online Auction System"
+Day 7,Real-Scale Domains + Mock,"Ride Hailing Service; Online Food Delivery Service; Version Control System (Git); Simple Search Engine; 2 hrs: Revise patterns; 2 hrs: Mock interview"

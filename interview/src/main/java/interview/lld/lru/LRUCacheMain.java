@@ -10,7 +10,7 @@ put(3, C)     // cache: {1:A, 2:B, 3:C}
 get(1)        // access key 1 → makes it most recently used
 put(4, D)     // key 2 is least recently used → evict it
 
-get(1) : remove item key,value from map and linkedlist then add at last
+get(1) : remove item key,value from map and linked list then add at last
 put(4) :
 
 Move a recently accessed item to the front (marking it as Most Recently Used, or MRU)
