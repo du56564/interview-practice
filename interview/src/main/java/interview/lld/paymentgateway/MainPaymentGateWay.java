@@ -37,7 +37,6 @@ import interview.lld.paymentgateway.enums.PaymentMethod;
 import interview.lld.paymentgateway.models.PaymentRequest;
 import interview.lld.paymentgateway.observer.CustomerNotifier;
 import interview.lld.paymentgateway.observer.MarchantNotifier;
-import interview.lld.paymentgateway.template.PaymentGatewayService;
 
 import java.util.Map;
 

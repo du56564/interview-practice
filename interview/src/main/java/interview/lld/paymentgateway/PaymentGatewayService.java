@@ -1,4 +1,4 @@
-package interview.lld.paymentgateway.template;
+package interview.lld.paymentgateway;
 
 import interview.lld.paymentgateway.enums.PaymentStatus;
 import interview.lld.paymentgateway.factory.PaymentProcessorFactory;

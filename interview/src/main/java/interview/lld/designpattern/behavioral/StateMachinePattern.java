@@ -1,11 +1,32 @@
 package interview.lld.designpattern.behavioral;
 
+/*
+lets an object change its behavior when its internal state changes, as if it were switching to a different class at runtime.
+It’s particularly useful in situations where:
+An object can be in one of many distinct states, each with different behavior.
+The object’s behavior depends on current context, and that context changes over time.
+You want to avoid large, monolithic if-else or switch statements that check for every possible state.
 
-// A state machine handles state transitions cleanly.
-// Each state knows which state comes next and what actions are valid.
-// No giant switch statements checking current state in every method.
-// Instead of scattered conditionals checking current state everywhere,
-// you encapsulate each state's behavior in its own class.
+vending machine system: accept money, dispense products, and go back to idle.
+
+*** Avoid if-else and switches for states
+State
+    - Idle
+    - ItemSelected
+    - HashMoney
+    - Dispensing
+    - Operation for all : selectItem, insertCoin, dispenseItem
+
+Entity
+    - State : MachineState
+    - ConcreteState : IdleState, ItemSelectedState
+    - Context : VendingMachine
+    - Client : Usage
+
+ */
+
+
+
 interface VendingMachineState {
     void insertCoin (VendingMachine machine);
     void selectProduct (VendingMachine machine);
@@ -98,3 +119,16 @@ public class StateMachinePattern {
         machine.dispense();
     }
 }
+
+/*
+Output:
+Insert coin first
+Coin inserted
+Coin already inserted
+Product selected
+Please wait, dispensing
+Please wait, dispensing
+Dispensing product
+Insert coin first
+
+ */
