@@ -37,7 +37,7 @@ public class TokenBucket {
     private void refill() {
         Instant now = Instant.now();
         // Calculate how many tokens to add based on the time elapsed
-        double tokensToAdd = (now.toEpochMilli() - lastRefillTimestamp.toEpochMilli()) * fillRate / 1000.0;
+        double tokensToAdd = (now.toEpochMilli() - lastRefillTimestamp.toEpochMilli()) * fillRate / 1000.0;//(rate/ 1000 ms)
         this.tokens = Math.min(capacity, this.tokens + tokensToAdd);  // Add tokens, but don't exceed capacity
         this.lastRefillTimestamp = now;
     }
