@@ -1,4 +1,4 @@
-package interview.lld.interviewmain;
+package interview.lld.interviewmain.lld;
 
 /*
 Design a movie ticket booking system similar to BookMyShow that allows users to browse movies,

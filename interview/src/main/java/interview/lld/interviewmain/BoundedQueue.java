@@ -4,11 +4,11 @@ import java.util.LinkedList;
 import java.util.Queue;
 
 // Core implementation
-class BoundedBuffer<T> {
+class BoundedQueue<T> {
     private final Queue<T> queue;
     private final int capacity;
 
-    public BoundedBuffer(int bufferSize) {
+    public BoundedQueue(int bufferSize) {
         this.queue = new LinkedList<>();
         this.capacity = bufferSize;
     }

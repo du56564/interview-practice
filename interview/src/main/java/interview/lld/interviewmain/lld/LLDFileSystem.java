@@ -1,4 +1,4 @@
-package interview.lld.interviewmain;
+package interview.lld.interviewmain.lld;
 /*
 Design an in-memory file system that supports creating files and directories, navigating paths, and basic file operations.
 

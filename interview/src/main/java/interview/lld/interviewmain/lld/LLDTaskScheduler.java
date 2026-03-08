@@ -1,4 +1,4 @@
-package interview.lld.interviewmain;
+package interview.lld.interviewmain.lld;
 
 /*
 

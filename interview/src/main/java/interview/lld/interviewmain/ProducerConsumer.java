@@ -6,8 +6,8 @@ import java.util.concurrent.LinkedBlockingQueue;
 // Using library
 public class ProducerConsumer {
     static void main() throws InterruptedException {
-        BlockingQueue<String> buffer = new LinkedBlockingQueue<>();
-
+        //BlockingQueue<String> buffer = new LinkedBlockingQueue<>(); /// in house library
+        BoundedQueue<String> buffer = new BoundedQueue<>(10);
         // consumer
         Thread consumer = new Thread(() -> {
             try {

@@ -1,4 +1,4 @@
-package interview.lld.interviewmain;
+package interview.lld.interviewmain.lld;
 
 /*
 A parking lot is a designated area where vehicles can be parked temporarily, either in public or private spaces.

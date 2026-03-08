@@ -1,4 +1,4 @@
-package interview.lld.interviewmain;
+package interview.lld.interviewmain.lld;
 
 /*
 An elevator system is a combination of mechanical components and software logic used in multi-story buildings to transport people
