@@ -20,7 +20,6 @@ public class DBConnectionPool {
         this.URL = url;
         this.USER = user;
         this.PASSWORD = password;
-
         initializePool();
     }
 
@@ -35,11 +34,9 @@ public class DBConnectionPool {
     }
 
     public synchronized Connection getConnection() throws SQLException {
-
         if (availableConnections.isEmpty()) {
             throw new RuntimeException("No available connections");
         }
-
         Connection conn = availableConnections.poll();
         usedConnections.add(conn);
         return conn;

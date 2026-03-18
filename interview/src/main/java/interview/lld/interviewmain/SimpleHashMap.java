@@ -29,18 +29,15 @@ Core concept:
 class SimpleHashMap<K, V> {
     private static final int DEFAULT_CAPACITY = 16; // Always power of 2
     private static final float LOAD_FACTOR = 0.75f;
-
     private Node<K, V>[] table;
     private int size;
 
     static class Node<K, V> {
+        final int hash;
         final K key;
         V value;
         Node<K, V> next;
-        final int hash;
-
-
-        Node (int hash, K key, V value, Node<K, V> next) {
+        Node(int hash, K key, V value, Node<K, V> next) {
             this.hash = hash;
             this.key = key;
             this.value = value;
@@ -53,12 +50,12 @@ class SimpleHashMap<K, V> {
         table = new Node[DEFAULT_CAPACITY];
     }
 
-    public V put (K key, V value) {
+    public V put(K key, V value) {
         int hash = hash(key);
         int index = hash & (table.length - 1);
 
         // Check if key exists
-        for (Node<K, V> node = table[index]; node!=null; node = node.next) {
+        for (Node<K, V> node = table[index]; node != null; node = node.next) {
             if (node.hash == hash && key.equals(node.key)) {
                 V oldValue = node.value;
                 node.value = value;
@@ -72,17 +69,18 @@ class SimpleHashMap<K, V> {
             resize();
         }
         return null;
-
     }
 
-    public V get (K key) {
+    public V get(K key) {
         int hash = hash(key);
         int index = hash & (table.length - 1);
 
-        for (Node<K, V> node = table[index]; node != null; node=node.next) {
+        Node<K, V> node = table[index];
+        while( node != null) {
             if (node.hash == hash && key.equals(node.key)) {
                 return node.value;
             }
+            node = node.next;
         }
         return null;
     }
@@ -111,18 +109,18 @@ class SimpleHashMap<K, V> {
 // Approach 1: Coarse-Grained Locking : Warapp with single lock on operation and operations will be serialised.
 class SynchronizedHashMap<K, V> {
     private final HashMap<K, V> map = new HashMap<>();
-    private  final ReentrantLock lock = new ReentrantLock();
+    private final ReentrantLock lock = new ReentrantLock();
 
-    public V put (K key, V value) {
+    public V put(K key, V value) {
         lock.lock();
         try {
-           return map.put(key, value); // returning the same contract as HashMap
+            return map.put(key, value); // returning the same contract as HashMap
         } finally {
             lock.unlock();
         }
     }
 
-    public V get (K key) {
+    public V get(K key) {
         lock.lock();
         try {
             return map.get(key);

@@ -35,8 +35,9 @@ class SimpleThreadPool {
         taskQueue = new BoundedQueue<>(queueCapacity);
         for (int i = 0; i < poolSize; i++) {
             Worker worker = new Worker();
-            workers.add(worker);
-            worker.start();
+            Thread thread = new Thread(worker);
+            workers.add(worker); // just used for shutdown()
+            thread.start();
         }
     }
 
@@ -62,17 +63,19 @@ class SimpleThreadPool {
     public List<Runnable> shutdownNow() {
         isShutdown = true;
         for (Worker worker : workers) {
-            worker.interrupt();
+
+            new Thread(worker).interrupt();
         }
         return new ArrayList<>();
     }
 
     // Worker Thread
-    private class Worker extends Thread {
+    private class Worker implements Runnable {
 
+        @Override
         public void run() {
 
-            while (!isShutdown || taskQueue.size() > 0) {
+            while (!isShutdown || taskQueue.size() > 0) { //this alives thread
                 try {
 
                     Runnable task = taskQueue.take();
@@ -86,21 +89,23 @@ class SimpleThreadPool {
     }
 
 
+
     static void main(String[] args) throws Exception {
 
         SimpleThreadPool pool = new SimpleThreadPool(3, 10);
 
-        for (int i = 0; i < 5; i++) {
+        for (int i = 0; i < 200; i++) {
 
             int taskId = i;
-
-            pool.submit(() -> {
+            Runnable runnable = () -> {
                 System.out.println(
                         Thread.currentThread().getName() +
                                 " executing task " + taskId
                 );
-            });
+            };
+            pool.submit(runnable);
         }
+
         pool.shutdown();
     }
 }

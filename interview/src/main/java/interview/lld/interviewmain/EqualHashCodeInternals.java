@@ -24,7 +24,7 @@ class UserObj {
     }
 
     @Override
-    public int hashCode () {
+    public int hashCode () { // hashCode() is used by hash-based collections when example use of HashMap, HashSet to decide which bucket to place the object in.
         return Objects.hashCode(id);
     }
 

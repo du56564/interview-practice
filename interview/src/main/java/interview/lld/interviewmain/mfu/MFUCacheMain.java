@@ -126,7 +126,7 @@ class MFUCache<K, V> {
         Node<K, V> newNode = new Node<>(key, value);
         nodeMap.put(key, newNode);
 
-        freqMap.computeIfAbsent(1, f -> new DoublyLinkedList<>())
+        freqMap.computeIfAbsent(1, f -> new DoublyLinkedList<>()) //Logic to consider : init (1, dll)
                 .addFirst(newNode);
 
         maxFreq = Math.max(maxFreq, 1);
@@ -140,7 +140,6 @@ class MFUCache<K, V> {
         node.freq++;
         freqMap.computeIfAbsent(node.freq, f -> new DoublyLinkedList<>())
                 .addFirst(node);
-
         maxFreq = Math.max(maxFreq, node.freq);
     }
 }
